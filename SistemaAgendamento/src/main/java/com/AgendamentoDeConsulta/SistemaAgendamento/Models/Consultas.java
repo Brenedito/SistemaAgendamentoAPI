@@ -1,23 +1,52 @@
 package com.AgendamentoDeConsulta.SistemaAgendamento.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Consultas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long pacienteID;
     private long medicoID;
-    private LocalDate DataConsulta;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate dataConsulta;
+
+    public long getPacienteID() {
+        return pacienteID;
+    }
+
+    public void setPacienteID(long pacienteID) {
+        this.pacienteID = pacienteID;
+    }
+
+    public LocalDate getdataConsulta() {
+        return dataConsulta;
+    }
+
+    public void setdataConsulta(LocalDate dataConsulta) {
+        dataConsulta = dataConsulta;
+    }
+
+    public long getMedicoID() {
+        return medicoID;
+    }
+
+    public void setMedicoID(long medicoID) {
+        this.medicoID = medicoID;
+    }
+
+    public Consultas(long pacienteID, long medicoID,LocalDate dataConsulta) {
+        this.pacienteID = pacienteID;
+        this.dataConsulta = dataConsulta;
+        this.medicoID = medicoID;
+    }
+
+    public Consultas() {
+    }
 }
