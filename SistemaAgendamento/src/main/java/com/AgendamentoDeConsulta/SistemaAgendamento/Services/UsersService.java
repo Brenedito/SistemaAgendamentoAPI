@@ -18,7 +18,6 @@ public class UsersService {
         return usersRepository.findAll();
     }
 
-
     public Users criarUsuario(UserDTO userDTO) {
         Users newUser = new Users(userDTO.nome(),userDTO.cpf(),userDTO.email(),userDTO.tipoUsuario(),userDTO.especialidade());
         return usersRepository.save(newUser);

@@ -27,13 +27,10 @@ public class ConsultasService  {
 
 
     public List<Consultas> ListarTodasAsConsultas() {
-        System.out.println("LISTANDO NO SERVICE");
         return consultasRepository.findAll();
     }
 
     public Consultas AgendarConsulta(ConsultasDTO Consulta){
-        System.out.println("AGENDANDO NO SERVICE");
-        System.out.println(Consulta.medicoID());
         Users Medico = usersRepository.getReferenceById(Consulta.medicoID());
         if(dataUtil.DataPassada(Consulta.DataConsulta())){
             return null; //Adicionar Exception.

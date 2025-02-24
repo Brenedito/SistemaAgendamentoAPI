@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 @Component
 public class DataUtils {
-
     public boolean DataPassada(LocalDate Data){
         return LocalDate.now().isAfter(Data);
     }

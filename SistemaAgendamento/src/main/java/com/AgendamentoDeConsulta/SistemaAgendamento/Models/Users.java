@@ -3,9 +3,7 @@ package com.AgendamentoDeConsulta.SistemaAgendamento.Models;
 import com.AgendamentoDeConsulta.SistemaAgendamento.Enums.UserEnum;
 import jakarta.persistence.*;
 
-
-
-@Entity(name = "Usuario")
+@Entity
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +15,7 @@ public class Users {
     private String email;
     private String tipoUsuario;
     private String especialidade = null;
-    private UserEnum status;
+    private UserEnum status = UserEnum.Disponivel;
 
     public long getId() {
         return id;
@@ -76,7 +74,11 @@ public class Users {
         this.cpf = cpf;
         this.email = email;
         this.tipoUsuario = tipoUsuario;
-        this.especialidade = especialidade;
+        if(tipoUsuario.equals("Médico") && especialidade == null){
+            this.especialidade = "Geral";
+        }else{
+            this.especialidade = especialidade;
+        }
     }
 
     public Users() {

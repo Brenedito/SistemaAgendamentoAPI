@@ -18,34 +18,15 @@ import java.util.List;
 public class ConsultaController {
 
     @Autowired
-    UsersRepository usersRepository;
-
-    @Autowired
     private ConsultasService Consulta;
 
     @GetMapping
     public List<Consultas> ListarConsultas(){
-        Users User1 = new Users();
-        Users User2 = new Users();
-
-        User1.setNome("Breno");
-        User1.setCpf("17891774017");
-        User1.setEmail("adjdakjd@dajkodn.com");
-        User1.setTipoUsuario("Paciente");
-        usersRepository.save(User1);
-        User2.setNome("Felipe");
-        User2.setCpf("17891774017");
-        User2.setEmail("adjdakjd@dajkodn.com");
-        User2.setTipoUsuario("Médico");
-        User2.setEspecialidade("Oftamologista");
-        User2.setStatus(UserEnum.Disponivel);
-        usersRepository.save(User2);
         return Consulta.ListarTodasAsConsultas();
     }
 
     @PostMapping
     public void AgendarConsulta(@RequestBody ConsultasDTO ConsultaDTO){
-        System.out.println("Entrando no POST");
         Consulta.AgendarConsulta(ConsultaDTO);
     }
 
